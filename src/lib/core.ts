@@ -11,7 +11,7 @@ export type Post = {
     description: string,
     html: string,
     date: string,
-    title: string
+    title: string;
 };
 
 export const allPosts: Post[] = fg
@@ -23,9 +23,9 @@ export const allPosts: Post[] = fg
             category: basename(dirname(path)),
             path: join(dirname(path), basename(postname)),
             postname: postname,
-            description: mrr.data.description,
+            description: mrr.data.description?.toString() ?? "",
             html: remark().use(html).processSync(mrr.content).toString(),
             date: mrr.data.date.toString(),
             title: mrr.data.title.toString()
         };
-    }).toSorted((post1, post2) => post1.date.localeCompare(post2.date));
+    }).toSorted((post1, post2) => -post1.date.localeCompare(post2.date));
