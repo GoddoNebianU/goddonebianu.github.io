@@ -10,6 +10,13 @@ interface PostProps {
     }>;
 }
 
+export function generateStaticParams() {
+    return allPosts.map(post => ({
+        category: post.category,
+        postname: post.postname
+    }));
+}
+
 function getPost(category: string, postname: string) {
     const post = allPosts.find(
         v => v.category === category && v.postname === postname
