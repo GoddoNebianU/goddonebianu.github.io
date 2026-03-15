@@ -22,9 +22,9 @@ export default function PostList({ posts }: { posts: Post[]; }) {
                 "flex flex-col gap-8"
             )}>
                 {
-                    posts.slice(0, showNumber).map((v) => (<Link
+                    posts.slice(0, showNumber).map((v, i) => (<Link
                         href={v.path}
-                        key={v.date}
+                        key={i}
                         className={cn(
                             "flex gap-3 flex-col wrap-break-word",
                         )}>
@@ -56,7 +56,6 @@ export default function PostList({ posts }: { posts: Post[]; }) {
                     onClick={() => {
                         setShowNumber(p => p + DEFAULT_SHOW_NUMBER);
                     }}>更多</button>}
-
         </div>
     </>;
 }
