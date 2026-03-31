@@ -11,20 +11,20 @@ export async function generateMetadata() {
 }
 
 export default function ArchivePage() {
-    const postsByMonth: Record<string, Post[]> = {};
+    const postsByYear: Record<string, Post[]> = {};
     for (const post of allPosts) {
         if (isPostNormal(post)) {
-            const date = post.date_created.slice(0, 7);
-            if (postsByMonth[date]) {
-                postsByMonth[date].push(post);
+            const date = post.date_created.slice(0, 4);
+            if (postsByYear[date]) {
+                postsByYear[date].push(post);
             } else {
-                postsByMonth[date] = [post];
+                postsByYear[date] = [post];
             }
         } else {
-            if (postsByMonth["Super"]) {
-                postsByMonth["Super"].push(post);
+            if (postsByYear["Super"]) {
+                postsByYear["Super"].push(post);
             } else {
-                postsByMonth["Super"] = [post];
+                postsByYear["Super"] = [post];
             }
         }
     }
@@ -36,19 +36,19 @@ export default function ArchivePage() {
                 "gap-4"
             )}>
             {
-                Object.keys(postsByMonth).map(date => (
+                Object.keys(postsByYear).toSorted((a, b) => -a.localeCompare(b)).map(date => (
                     <div key={date}>
                         <h1 className={cn(
                             "text-gray-500",
                             "flex"
                         )}>
                             <div className="w-20">{date}</div>
-                            <div>| 共{postsByMonth[date].length} 篇文章</div>
+                            <div>| 共{postsByYear[date].length} 篇文章</div>
                         </h1>
                         <hr className="border-gray-400" />
                         <PostList
-                            posts={postsByMonth[date]}
-                            showCategory
+                            posts={postsByYear[date]}
+                            showCategory={isPostNormal(postsByYear[date][0])}
                             fullyDisplay />
                     </div >
                 ))
