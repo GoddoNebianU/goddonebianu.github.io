@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "../components/Header";
 import { cn } from "@/lib/cn";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "GoddoNebianU's Blog",
@@ -29,6 +30,7 @@ export default function RootLayout({
           )}>
           {children}
           <SpeedInsights />
+          <Analytics />
         </main>
         {/* <Footer /> */}
       </body>
