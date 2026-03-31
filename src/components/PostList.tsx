@@ -18,8 +18,6 @@ export default function PostList({
     showDescription,
     fullyDisplay
 }: PostListProps) {
-    "use client";
-
     const DEFAULT_SHOW_NUMBER = 10;
     const [showNumber, setShowNumber] = useState(DEFAULT_SHOW_NUMBER);
 

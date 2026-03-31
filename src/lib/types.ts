@@ -1,10 +1,10 @@
-export type PostMeta = {
+type PostMeta = {
     category: string;
     postname: string;
     html: string;
 };
 
-export type PostNormal = {
+type PostNormal = {
     title: string;
     description: string;
     date_created: string;
@@ -12,7 +12,7 @@ export type PostNormal = {
     meta: PostMeta;
 };
 
-export type PostSuper = {
+type PostSuper = {
     title: string;
     description: string;
     meta: PostMeta;
