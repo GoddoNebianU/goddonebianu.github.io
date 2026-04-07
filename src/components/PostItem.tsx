@@ -30,13 +30,13 @@ export default function PostItem({
                     {post.title}
                 </h3>
                 {showDescription && <p className={cn(
-                    "text-gray-500"
+                    "text-stone-500"
                 )}>
                     {post.description}
                 </p>}
             </Link>
             <div className={cn(
-                "text-gray-500",
+                "text-stone-500",
                 "flex gap-4 font-mono"
             )}>
                 <div className="w-38.5">{isPostNormal(post) && post.date_created}</div>

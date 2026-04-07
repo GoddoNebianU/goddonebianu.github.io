@@ -9,7 +9,7 @@ export default function Header() {
                     "flex items-center justify-center",
                 )}>
                 <div className={cn(
-                    "text-gray-500"
+                    "text-stone-500"
                 )}>
                     <Link className="px-2" href={"/"}>首页</Link>
                     <Link className="px-2" href={"/posts"}>归档</Link>

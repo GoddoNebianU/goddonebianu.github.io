@@ -39,13 +39,13 @@ export default function ArchivePage() {
                 Object.keys(postsByYear).toSorted((a, b) => -a.localeCompare(b)).map(date => (
                     <div key={date}>
                         <h1 className={cn(
-                            "text-gray-500",
+                            "text-stone-500",
                             "flex"
                         )}>
                             <div className="w-20">{date}</div>
                             <div>| 共{postsByYear[date].length} 篇文章</div>
                         </h1>
-                        <hr className="border-gray-400" />
+                        <hr className="border-stone-400" />
                         <PostList
                             posts={postsByYear[date]}
                             showCategory={isPostNormal(postsByYear[date][0])}

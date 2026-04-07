@@ -1,7 +1,6 @@
 import { readFile } from "fs/promises";
 import { remark } from "remark";
 import html from "remark-html";
-import styles from "@/markdown.module.css";
 
 export async function generateMetadata() {
     return {

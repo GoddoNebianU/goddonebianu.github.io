@@ -49,7 +49,7 @@ export default async function PostPage(
             </article>
             {isPostNormal(post) &&
                 <div className={cn(
-                    "font-light text-gray-500 text-sm mt-8"
+                    "font-light text-stone-500 text-sm mt-8"
                 )}>创建于：{post.date_created}，最后编辑于：{post.date_modified}</div>
             }
         </div>

@@ -43,7 +43,7 @@ export default function PostList({
             {showNumber < posts.length && !fullyDisplay &&
                 <button className={cn(
                     "underline hover:cursor-pointer w-fit",
-                    "text-gray-500"
+                    "text-stone-500"
                 )}
                     onClick={() => {
                         setShowNumber(p => p + DEFAULT_SHOW_NUMBER);

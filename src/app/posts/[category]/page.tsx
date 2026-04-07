@@ -38,9 +38,9 @@ export default async function CategoryPage(
     const category = getCategory(params.category);
     return <>
         <h1 className={cn(
-            "text-gray-500"
+            "text-stone-500"
         )}>{category}</h1>
-        <hr className="border-gray-400" />
+        <hr className="border-stone-400" />
         <PostList
         showDescription
         posts={
