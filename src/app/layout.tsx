@@ -26,7 +26,7 @@ export default function RootLayout({
         <main
           className={cn(
             "flex flex-col px-4 md:px-0",
-            "md:w-10/12 w-full max-w-250",
+            "md:w-10/12 w-full max-w-[65ch]",
           )}>
           {children}
           <SpeedInsights />
