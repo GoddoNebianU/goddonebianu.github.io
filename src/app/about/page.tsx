@@ -16,10 +16,11 @@ export default async function AboutPage() {
             .process(await readFile("README.md", { encoding: "utf8" }))
     )).value;
     return (
-        <div
-            className={styles["markdown-body"]}
-            dangerouslySetInnerHTML={{
-                __html: htmlContent
-            }} />
+        <div className="mx-auto">
+            <article className={"prose prose-stone"}
+                dangerouslySetInnerHTML={{
+                    __html: htmlContent
+                }} />
+        </div>
     );
 }

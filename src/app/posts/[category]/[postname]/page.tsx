@@ -1,6 +1,5 @@
 import { allPosts } from "@/lib/core";
 import { notFound } from "next/navigation";
-import styles from "@/markdown.module.css";
 import { cn } from "@/lib/cn";
 import { isPostNormal } from "@/lib/types";
 
@@ -40,17 +39,19 @@ export default async function PostPage(
     const params = await props.params;
     const post = getPost(params.category, params.postname);
     return <>
-        <div className={styles["markdown-body"]}>
-            <h1>{post.title}</h1>
-            <div
-                dangerouslySetInnerHTML={{
-                    __html: post.meta.html
-                }} />
+        <div className="mx-auto">
+            <article className={"prose prose-stone"}>
+                <h1>{post.title}</h1>
+                <div
+                    dangerouslySetInnerHTML={{
+                        __html: post.meta.html
+                    }} />
+            </article>
+            {isPostNormal(post) &&
+                <div className={cn(
+                    "font-light text-gray-500 text-sm mt-8"
+                )}>创建于：{post.date_created}，最后编辑于：{post.date_modified}</div>
+            }
         </div>
-        {isPostNormal(post) &&
-            <div className={cn(
-                "font-light text-gray-500 text-sm mt-8"
-            )}>创建于：{post.date_created}，最后编辑于：{post.date_modified}</div>
-        }
     </>;
 }
