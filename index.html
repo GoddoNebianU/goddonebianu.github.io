@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>~/pages</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0d1117;color:#c9d1d9;font:14px/1.6 'JetBrains Mono',monospace;max-width:720px;margin:40px auto;padding:0 16px}
+  h1{color:#58a6ff;font-size:1rem;margin-bottom:20px}
+  h1::before{content:'goddonebianu@github:~$ ';color:#3fb950}
+  a{color:#58a6ff;text-decoration:none}
+  a:hover{text-decoration:underline}
+  .url{color:#3fb950}
+  p{margin:6px 0;padding:6px 10px;border-bottom:1px solid #30363d}
+  .err{color:#f85149}
+  small{color:#8b949e;font-size:.75rem}
+</style>
+<h1>ls-pages</h1>
+<div id="list"><small>Loading...</small></div>
+<script>
+(async(d)=>{
+  try{
+    const r=await fetch('https://api.github.com/users/goddonebianu/repos?per_page=100&type=owner').then(r=>r.json());
+    const p=r.filter(r=>r.has_pages);
+    if(!p.length){d.innerHTML='<span class=err>No Pages repos found.</span>';return}
+    d.innerHTML=p.map((r,i)=>{
+      const u=`https://goddonebianu.github.io/${r.name}`;
+      return `<p>${i+1}. <a href="https://github.com/goddonebianu/${r.name}">${r.name}</a> &rarr; <a class=url href="${u}">${u}</a></p>`
+    }).join('')+`<br><small>${p.length} pages / ${r.length} repos</small>`
+  }catch(e){d.innerHTML=`<span class=err>${e.message}</span>`}
+})(document.getElementById('list'))
+</script>
